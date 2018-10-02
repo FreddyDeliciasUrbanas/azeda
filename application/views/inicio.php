@@ -1,34 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
 
-  <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Grayscale - Start Bootstrap Theme</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="<?php echo base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="assets/css/grayscale.min.css" rel="stylesheet">
-
-  </head>
 
   <body id="page-top">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/logo-navbar-large.png" alt="" class="img-fluid"> </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -50,15 +27,74 @@
     </nav>
 
     <!-- Header -->
-    <header class="masthead">
-      <div class="container d-flex h-100 align-items-center">
-        <div class="mx-auto text-center">
-          <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
-          <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+    <style>
+      .slide1{
+          background-image: url('assets/img/zapatos-ejemplo2.jpg') !important;
+      }
+
+      .slide2{
+        background-image: url('assets/img/zapatos-ejemplo.jpg') !important;
+      }
+
+      .slide3{
+        background-image: url('assets/img/zapatillas/zapatilla1.jpg') !important;
+      }
+
+      .text-shadow{
+            text-shadow:0px 0px 20px rgba(0,0,0,.9);
+        }
+
+        .text-shadow-white{
+            text-shadow:0px 0px 20px rgba(255,255,255,.9) !important;
+        }
+    </style>
+    
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <header class="masthead slide1">
+            <div class="container d-flex h-100 align-items-center">
+              <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0 text-uppercase text-shadow-white">Inauguracion</h1>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5">Bienvenidos a nuestra tienda virtual</h2>
+                <a href="#about" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
+              </div>
+            </div>
+          </header>
+        </div>
+        <div class="carousel-item">
+          <header class="masthead slide2">
+            <div class="container d-flex h-100 align-items-center">
+              <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0 text-uppercase">Azeda</h1>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5">Your store</h2>
+                <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+              </div>
+            </div>
+          </header>
+        </div>
+        <div class="carousel-item">
+          <header class="masthead slide3">
+            <div class="container d-flex h-100 align-items-center">
+              <div class="mx-auto text-center">
+                <h1 class="mx-auto my-0 text-uppercase">Azeda</h1>
+                <h2 class="text-white-50 mx-auto mt-2 mb-5">Your store</h2>
+                <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+              </div>
+            </div>
+          </header>
         </div>
       </div>
-    </header>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="about-section text-center">
@@ -213,16 +249,4 @@
       </div>
     </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="assets/js/grayscale.min.js"></script>
-
-  </body>
-
-</html>
+    
