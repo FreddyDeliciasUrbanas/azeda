@@ -3,6 +3,10 @@
 	background-image: url('assets/img/login-background.png');
 	background-size: cover;
 }
+
+.nodisplay{
+	display:none;
+}
 	.formulario
 	{
 		padding:30px;
@@ -14,7 +18,7 @@
 	.formulario input{
 		margin-top:20px;
 		border-radius: 50px;
-		background: linear-gradient(to right, #b85f04, #fffb95);
+		background: linear-gradient(to right, #FF77C7, #FECDF9);
 		
 		color:#471500;
 
@@ -41,7 +45,7 @@
 
 	.btn-login{
 		margin-top:20px;
-		background:linear-gradient(to bottom, #b85f04, #fffb95, #b85f04);
+		background:linear-gradient(to bottom, #FF77C7, #FECDF9, #FF77C7);
 		border-radius:20px;
 		color:#422201;
 	}
@@ -85,8 +89,8 @@
 
 			<input type="hidden" value="<?php echo $token ?>" id="token-login">
 			
-			<button class="btn btn-login btn-block" type="submit">Ingresar</button>
-			
+			<button id="btn-login" class="btn btn-login btn-block" type="submit">Ingresar</button>
+			<button id="btn-login-loading" class="btn btn-login btn-block nodisplay" type="button"><span class="fa fa-spinner fa-spin"></span></button>
 		</form>
 	</div>
 </section>

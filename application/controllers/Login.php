@@ -60,10 +60,11 @@ class Login extends CI_Controller {
 					session_start();
 					$user = $this->Login_model->get_user($username);
 
-					$_SESSION['name'] = $user->nombre_usuario;
+					$this->session->set_userdata('name', $user->nombre_usuario);
+					/*$_SESSION['name'] = $user->nombre_usuario;
 					$_SESSION['email'] = $user->email_usuario;
 					$_SESSION['nivel'] = $user->nivel_usuario;
-					$_SESSION['is_logued_in'] = true;
+					$_SESSION['is_logued_in'] = true;*/
 				}
 				//print_r($_SESSION) ;
 				//echo $_SESSION['is_logued_in'];
