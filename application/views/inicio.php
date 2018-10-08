@@ -10,16 +10,21 @@
           Menu
           <i class="fas fa-bars"></i>
         </button>
+        <style type="text/css">
+          .pink{
+            color:#FC75E7 !important;
+          }
+        </style>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">Productos</a>
+              <a class="nav-link js-scroll-trigger text-shadow-white pink" href="#about">Presentacion</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#projects">Novedades</a>
+              <a class="nav-link js-scroll-trigger text-shadow-white pink" href="#projects">Catalogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#signup">Contacto</a>
+              <a class="nav-link js-scroll-trigger text-shadow-white pink" href="#signup">Haz tu pedido</a>
             </li>
           </ul>
         </div>
@@ -29,15 +34,15 @@
     <!-- Header -->
     <style>
       .slide1{
-          background-image: url('assets/img/zapatos-ejemplo2.jpg') !important;
+          background-image: url('assets/img/<?php echo $img_carrusel_1; ?>') !important;
       }
 
       .slide2{
-        background-image: url('assets/img/zapatos-ejemplo.jpg') !important;
+        background-image: url('assets/img/<?php echo $img_carrusel_2; ?>') !important;
       }
 
       .slide3{
-        background-image: url('assets/img/zapatillas/zapatilla1.jpg') !important;
+        background-image: url('assets/img/<?php echo $img_carrusel_3; ?>') !important;
       }
 
       .text-shadow{
@@ -56,8 +61,8 @@
           <header class="masthead slide1">
             <div class="container d-flex h-100 align-items-center">
               <div class="mx-auto text-center">
-                <h1 class="mx-auto my-0 text-uppercase text-shadow-white">Inauguracion</h1>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5">Bienvenidos a nuestra tienda virtual</h2>
+                <h1 class="mx-auto my-0 text-uppercase text-shadow"><?php echo $titulo_carrusel_1; ?></h1>
+                <h2 class="text-white mx-auto mt-2 mb-5 text-shadow"><?php echo $subtitulo_carrusel_1; ?></h2>
                 <a href="#about" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
               </div>
             </div>
@@ -67,8 +72,8 @@
           <header class="masthead slide2">
             <div class="container d-flex h-100 align-items-center">
               <div class="mx-auto text-center">
-                <h1 class="mx-auto my-0 text-uppercase">Azeda</h1>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5">Your store</h2>
+                <h1 class="mx-auto my-0 text-uppercase"><?php echo $titulo_carrusel_2; ?></h1>
+                <h2 class="text-white mx-auto mt-2 mb-5 text-shadow"><?php echo $subtitulo_carrusel_2; ?></h2>
                 <a href="#about" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
               </div>
             </div>
@@ -78,8 +83,8 @@
           <header class="masthead slide3">
             <div class="container d-flex h-100 align-items-center">
               <div class="mx-auto text-center">
-                <h1 class="mx-auto my-0 text-uppercase">Azeda</h1>
-                <h2 class="text-white-50 mx-auto mt-2 mb-5">Your store</h2>
+                <h1 class="mx-auto my-0 text-uppercase"><?php echo $titulo_carrusel_3; ?></h1>
+                <h2 class="text-white mx-auto mt-2 mb-5 text-shadow"><?php echo $subtitulo_carrusel_3; ?></h2>
                 <a href="#about" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
               </div>
             </div>
@@ -128,73 +133,9 @@
 
         <!-- Project One Row -->
         <div class="row">
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="assets/img/zapatillas/zapatilla1.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="assets/img/zapatillas/zapatilla1.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="assets/img/zapatillas/zapatilla1.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="assets/img/zapatillas/zapatilla1.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="assets/img/zapatillas/zapatilla1.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="assets/img/zapatillas/zapatilla1.png" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-          </div>
-
           
+          <?php echo $cards_productos; ?>
+
         </div>
 
         <!-- Project Two Row -->
@@ -203,15 +144,30 @@
       </div>
     </section>
 
+    <style type="text/css">
+      .form{
+        background:#FFFFFF;
+        border-radius: 15px;
+        padding:20px;
+        background:linear-gradient(to right, #FF76E4, #FFCDF5);
+      }
+
+      .form input{
+        margin-top: 20px;
+        
+      }
+    </style>
     <!-- Signup Section -->
     <section id="signup" class="signup-section">
-      <div class="container">
+      <div class="container text-center">
+        <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+            <h2 class="text-white mb-5">Haz tu pedido <br> <small>Y lo llevamos sin costo adicional</small></h2>
         <div class="row">
-          <div class="col-md-10 col-lg-8 mx-auto text-center">
 
-            <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-            <h2 class="text-white mb-5">Haz tu pedido</h2>
-            <h3>Y te lo llevamos sin costo adicional</h3>
+          <div class="col-md-6 col-lg-6 mx-auto text-center">
+
+            
+            
             <form class="form">
               <input type="text" class="form-control" id="inputEmail" placeholder="Como te llamas?...">
               
@@ -221,9 +177,19 @@
              
               <input type="email" class="form-control" id="inputEmail" placeholder="Donde llevamos tu pedido?...">
 
-              <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+              <button type="submit" class="btn btn-primary mx-auto">Realizar pedido</button>
             </form>
 
+          </div>
+
+          <div class="col-md-6 col-lg-6">
+            <div class="form">
+              <div class="row">
+                <div class="col-3">
+                  <img src="assets/img/zapatos-ejemplo.jpg" class="img-fluid"/>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -289,7 +255,7 @@
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
       <div class="container">
-        Copyright &copy; Your Website 2018
+        Copyright &copy; Azeda 2018
       </div>
     </footer>
 
