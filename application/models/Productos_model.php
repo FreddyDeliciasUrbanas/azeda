@@ -29,9 +29,8 @@ class Productos_model extends CI_Model {
 		return $this->db->get('img_producto');
 	}
 
-	function guardar_producto($id, $nombre, $descripcion, $precio){
+	function guardar_producto($nombre, $descripcion, $precio){
 		$data = array(
-			'id_producto' => $id,
 			'nombre_producto' => $nombre,
 			'descripcion_producto' => $descripcion,
 			'precio_producto' => $precio);
@@ -39,8 +38,22 @@ class Productos_model extends CI_Model {
 			
 	}
 
+	function modificar_producto($id, $nombre, $descripcion, $precio){
+		$this->db->where('id_producto', $id);
+		$data = array(
+			'nombre_producto' => $nombre,
+			'descripcion_producto' => $descripcion,
+			'precio_producto' => $precio);
+		return $this->db->update('productos', $data);
+	}
+
 	function eliminar_producto($id){
 		$this->db->where('id_producto', $id);
-		return $this->db->delete('productos');
+		if($this->db->delete('img_producto') && $this->db->delete('productos')){
+			return true;
+		}else{
+			 return false;
+		}
+		
 	}
 }

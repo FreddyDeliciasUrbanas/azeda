@@ -11,7 +11,7 @@ class Inicio extends CI_Controller {
 	
 	public function index()
 	{
-		$data = $this->leer_carruseles();
+		$data = $this->leer_backend();
 
 		$data['cards_productos'] = $this->leer_cards_productos();
 		$data_footer['js_file'] = 'grayscale.js';
@@ -34,12 +34,13 @@ class Inicio extends CI_Controller {
 		return $html;
 	}
 
-	function leer_carruseles(){
+	function leer_backend(){
 		$carrusel1 = $this->Admin_model->cargar_carrusel(1);
 		$carrusel2 = $this->Admin_model->cargar_carrusel(2);
 		$carrusel3 = $this->Admin_model->cargar_carrusel(3);
 
-		$data = array();
+		$presentacion = $this->Admin_model->leer_presentacion();
+
 		$data['titulo_carrusel_1'] = $carrusel1->titulo_carrusel;
 		$data['titulo_carrusel_2'] = $carrusel2->titulo_carrusel;
 		$data['titulo_carrusel_3'] = $carrusel3->titulo_carrusel;
@@ -52,8 +53,15 @@ class Inicio extends CI_Controller {
 		$data['img_carrusel_2'] = $carrusel2->img_carrusel;
 		$data['img_carrusel_3'] = $carrusel3->img_carrusel;
 
+		$data['titulo_presentacion'] = $presentacion->titulo_presentacion;
+		$data['subtitulo_presentacion'] = $presentacion->subtitulo_presentacion;
+		$data['img_presentacion'] = $presentacion->img_presentacion;
+		$data['img_fondo_presentacion'] = $presentacion->img_fondo_presentacion;
+
 		return $data;
 	}
+
+	
 
 
 }
