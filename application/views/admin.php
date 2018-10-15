@@ -20,6 +20,9 @@
 <section class="container-fluid">
 	<div class="row text-center" style="display:block;font-size: 2em">
 		Administracion del sitio
+		<div class="float-right">
+			<a  style="font-size:20px" href="<?php echo base_url() ?>login/logout_user">Cerrar sesion</a>
+		</div>
 	</div>
 	<hr><!--==========================================================================================-->
 	<div class="row">

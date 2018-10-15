@@ -53,5 +53,7 @@
 
 
 <!--MODALS-->
-<?php echo $modal_agregar; ?>
+<?php echo $modal_agregar;
+echo $modals_eliminar;
+echo $modals_modificar; ?>
 

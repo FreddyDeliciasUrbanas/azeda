@@ -32,7 +32,7 @@ function modificar_carrusel( id, titulo, subtitulo, img){
 	$.ajax({
 		data:data,
 		type:'post',
-		url:base_url + 'admin/modificar_carrusel/' + id,
+		url:'admin/modificar_carrusel/' + id,
 		processData:false,
 		contentType:false,
 		cache:false,

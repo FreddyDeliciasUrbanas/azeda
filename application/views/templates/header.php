@@ -4,17 +4,19 @@
   <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Bienvenidos al sitio oficial de AZEDA YOUR STORE. Aca puedes encontrar la informacion de todos nuestros productos que tenemos a la venta">
+    <meta name="keywords" content="zapatos, zapatillas, calzado, azeda, jessica, salinas, store">
+    <meta name="author" content="Freddy Perez Pacheco, freddy@deliciasurbanas.cl">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     <title>Azeda - Your Store</title>
 
-    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
-    <link rel="manifest" href="assets/img/site.webmanifest">
-    <link rel="mask-icon" href="assets/img/safari-pinned-tab.svg" color="#cb1f7f">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url(); ?>assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url(); ?>assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/img/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo base_url(); ?>assets/img/site.webmanifest">
+    <link rel="mask-icon" href="<?php echo base_url(); ?>assets/img/safari-pinned-tab.svg" color="#cb1f7f">
     <meta name="apple-mobile-web-app-title" content="Azeda">
     <meta name="application-name" content="Azeda">
     <meta name="msapplication-TileColor" content="#a7d2d2">
@@ -30,5 +32,5 @@
 
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>assets/css/grayscale.css" rel="stylesheet">
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
   </head>

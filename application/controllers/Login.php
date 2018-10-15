@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+header('Access-Control-Allow-Origin: *');
 class Login extends CI_Controller {
 
 	
 	public function index()
 	{
-		session_start();
+		
+		
 		if (!isset($_SESSION['nivel'])){
 			$data['token'] = $this->token();
 			$data['title'] = 'Iniciar Sesion';
@@ -28,10 +29,12 @@ class Login extends CI_Controller {
 	}
 
 	public function login_user(){
+		sleep(1);
 		if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'){
 			if($this->input->post('token') && $this->input->post('token') == $_SESSION['token']){
 				
-				$this->form_validation->set_rules('user_email','err','required|trim');
+				
+				$this->form_validation->set_rules('user_email','err','required|trim|valid_email');
 				$this->form_validation->set_rules('user_password', 'err', 'required|trim');
 
 				$this->form_validation->set_message('required', '%s1');
@@ -50,49 +53,38 @@ class Login extends CI_Controller {
 				$username = $this->input->post('user_email');
 				$password = $this->input->post('user_password');
 
-				//$username = 'freddy.perez.trabajos@gmail.com';
-				//$password = 'ale65043210';
-
 				$this->load->model('Login_model');
 
 				$valid_admin = $this->Login_model->validate_user($username, $password);
 				if($valid_admin == 'valid'){
-					session_start();
 					$user = $this->Login_model->get_user($username);
+					$data = array(
+						'name' => $user->nombre_usuario,
+						'lastname' => $user->apellido_usuario,
+						'email' => $user->email_usuario,
+						'nivel' => $user->nivel_usuario);
 
-					$this->session->set_userdata('name', $user->nombre_usuario);
-					/*$_SESSION['name'] = $user->nombre_usuario;
-					$_SESSION['email'] = $user->email_usuario;
-					$_SESSION['nivel'] = $user->nivel_usuario;
-					$_SESSION['is_logued_in'] = true;*/
+					$this->session->set_userdata($data);
+					
 				}
-				//print_r($_SESSION) ;
-				//echo $_SESSION['is_logued_in'];
-
 				echo json_encode(array('response' => $valid_admin));
+			}else{
+				echo json_encode(array('response' => 'err_token'));
 			}
+		}else{
+			echo json_encode(array('response' => 'err_xmlhttprequest'));
 		}
-		
-		//if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'){
-			//sleep(1);
-
-			
-			
-	//	}else{
-	//		show_404();
-	//	}
 	}
 
 	public function token(){
  		$token = md5(uniqid(rand(),true));
- 		$_SESSION['token'] = $token;
+ 		$this->session->set_userdata('token', $token);
  		return $token;
  	}
 
 	public function logout_user(){
-		session_start();
 		session_destroy();
 		session_unset();
-		redirect(base_url(), 'refresh');
+		redirect(base_url().'login', 'refresh');
 	}
 }

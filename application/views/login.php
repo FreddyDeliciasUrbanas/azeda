@@ -13,6 +13,7 @@
 		box-shadow:0px 0px 50px 10px rgba(0,0,0,.4);
 		background: #FFFFFF;
 		border-radius:20px;
+		margin-top:50px;
 	}
 
 	.formulario input{
@@ -88,9 +89,17 @@
 			</div>
 
 			<input type="hidden" value="<?php echo $token ?>" id="token-login">
+			<input type="hidden" value="<?php echo base_url(); ?>" id="base_url">
 			
 			<button id="btn-login" class="btn btn-login btn-block" type="submit">Ingresar</button>
 			<button id="btn-login-loading" class="btn btn-login btn-block nodisplay" type="button"><span class="fa fa-spinner fa-spin"></span></button>
+			<button id="btn-login-success" class="btn btn-login btn-block nodisplay" type="button"><span class="fa fa-check-circle"></span> Verificado</button>
+			
+			<div id="alert-user" class="alert alert-danger nodisplay">el <strong>Nombre de usuario</strong> no existe</div>
+			<div id="alert-password" class="alert alert-danger nodisplay">la <strong>Contraseña</strong> es incorrecta</div>
+			<div id="alert-required-email" class="alert alert-danger nodisplay">El campo <strong>Email</strong> es obligatorio</div>
+			<div id="alert-required-password" class="alert alert-danger nodisplay">El campo <strong>Password</strong> es obligatorio</div>
+			<div id="alert-email" class="alert alert-danger nodisplay">el <strong>Email</strong> ingresado no es valido</div>
 		</form>
 	</div>
 </section>

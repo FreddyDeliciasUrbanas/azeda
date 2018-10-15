@@ -9,13 +9,19 @@ class Productos_model extends CI_Model {
 	}
 
 	function leer_producto($id_producto){
-		$this->db->where('id_producto', $id_producto);
+		
 		$producto = $this->db->get('productos');
-		return $producto->row();
+		return $producto->row($id_producto);
 	}
 
 	function leer_img_producto($id_producto){
 		$this->db->where('id_producto', $id_producto);
+		$img = $this->db->get('img_producto');
+		return $img->row();
+	}
+
+	function leer_img_producto_by_id($id_img){
+		$this->db->where('id_img_producto', $id_img);
 		$img = $this->db->get('img_producto');
 		return $img->row();
 	}
@@ -38,6 +44,13 @@ class Productos_model extends CI_Model {
 			
 	}
 
+	function guardar_img_producto($id_producto, $img_producto){
+		$data = array(
+			'id_producto' => $id_producto,
+			'url_img_producto' => $img_producto);
+		return $this->db->insert('img_producto', $data);
+	}
+
 	function modificar_producto($id, $nombre, $descripcion, $precio){
 		$this->db->where('id_producto', $id);
 		$data = array(
@@ -49,11 +62,22 @@ class Productos_model extends CI_Model {
 
 	function eliminar_producto($id){
 		$this->db->where('id_producto', $id);
-		if($this->db->delete('img_producto') && $this->db->delete('productos')){
-			return true;
+		if($this->db->delete('productos')){
+			$this->db->where('id_producto', $id);
+			if($this->db->delete('img_producto')){
+				return true;
+			}
+			else{
+				return false;
+			}
 		}else{
 			 return false;
 		}
 		
+	}
+
+	function eliminar_img_producto($id){
+		$this->db->where('id_img_producto');
+		return $this->db->delete('img_producto');
 	}
 }

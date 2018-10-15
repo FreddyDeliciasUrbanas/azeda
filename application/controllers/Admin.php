@@ -3,29 +3,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+
+
 	function __construct(){
 		parent::__construct();
 		$this->load->model('Productos_model');
 		$this->load->model('Admin_model');
+		$this->load->model('Mensajes_model');
+		
 	}
 	
 	public function index(){
-		$data = $this->leer_carruseles();
-		$data_footer['js_file'] = 'carruseles.js';
-		//Variables por defecto
-		$data['carrusel_active'] = 'active';
-		$data['presentacion_active'] = '';
-		$data['catalogo_active'] = '';
-		$data['contacto_active'] = '';
-		$data['admin_var'] = $this->load->view('admin/carruseles', $data, true);
+		if(isset($_SESSION['nivel']) && $_SESSION['nivel'] == '1'){
+			$data = $this->leer_carruseles();
+			$data_footer['js_file'] = 'carruseles.js';
+			//Variables por defecto
+			$data['carrusel_active'] = 'active';
+			$data['presentacion_active'] = '';
+			$data['catalogo_active'] = '';
+			$data['contacto_active'] = '';
+			$data['admin_var'] = $this->load->view('admin/carruseles', $data, true);
 
-		$this->load->view('templates/header');
-		$this->load->view('admin', $data);
-		$this->load->view('templates/footer', $data_footer);
+			$this->load->view('templates/header');
+			$this->load->view('admin', $data);
+			$this->load->view('templates/footer', $data_footer);
+		}else{
+			redirect(base_url().'login');
+		}
+		
 	}
 
 	public function presentacion()
 	{
+		if(isset($_SESSION['nivel']) && $_SESSION['nivel'] == '1'){
 		$data = $this->leer_presentacion();
 		$data_footer['js_file'] = 'presentacion.js';
 		//Variables por defecto
@@ -38,9 +48,14 @@ class Admin extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('admin', $data);
 		$this->load->view('templates/footer', $data_footer);
+		}else{
+			redirect(base_url().'login');
+		}
 	}
 
 	public function catalogo(){
+		if(isset($_SESSION['nivel']) && $_SESSION['nivel'] == '1'){
+		setlocale(LC_ALL, "ES_es");
 		$data_footer['js_file'] = 'catalogo.js';
 		//Variables por defecto
 		$data['carrusel_active'] = '';
@@ -49,6 +64,8 @@ class Admin extends CI_Controller {
 		$data['contacto_active'] = '';
 		$data['filas_producto_admin'] = $this->leer_catalogo();
 		$data['modal_agregar'] = $this->load->view('modals/agregar-producto-modal','', true);
+		$data['modals_eliminar'] = $this->leer_modals_eliminar_productos();
+		$data['modals_modificar'] = $this->leer_modals_modificar_producto();
 		$data['admin_var'] = $this->load->view('admin/catalogo', $data, true);
 		
 
@@ -56,20 +73,98 @@ class Admin extends CI_Controller {
 		$this->load->view('templates/header');
 		$this->load->view('admin', $data);
 		$this->load->view('templates/footer', $data_footer);
+		}else{
+			redirect(base_url().'login');
+		}
 	}
 
 	public function contacto(){
-		$data_footer['js_file'] = '';
+		if(isset($_SESSION['nivel']) && $_SESSION['nivel'] == '1'){
+		$data = $this->leer_ajustes_contacto();
+		$data_footer['js_file'] = 'contacto.js';
 		//Variables por defecto
 		$data['carrusel_active'] = '';
 		$data['presentacion_active'] = '';
 		$data['catalogo_active'] = '';
 		$data['contacto_active'] = 'active';
-		$data['admin_var'] = $this->load->view('admin/contacto', '', true);
+		$data['cards_mensajes'] = $this->leer_cards_mensajes();
+		$data['admin_var'] = $this->load->view('admin/contacto', $data, true);
 
 		$this->load->view('templates/header');
 		$this->load->view('admin', $data);
 		$this->load->view('templates/footer', $data_footer);
+		}else{
+			redirect(base_url().'login');
+		}
+	}
+
+	function leer_cards_mensajes(){
+		$html = '';
+		$mensajes = $this->Mensajes_model->leer_mensajes();
+		foreach($mensajes->result() as $mensaje){
+			$data['id_mensaje'] = $mensaje->id_mensaje;
+			$data['nombre_mensaje'] = $mensaje->nombre_mensaje;
+			$data['direccion_mensaje'] =$mensaje->direccion_mensaje;
+			$data['email_mensaje'] = $mensaje->email_mensaje;
+			$data['telefono_mensaje'] = $mensaje->telefono_mensaje;
+			$data['hora_mensaje'] = $mensaje->hora_mensaje;
+			$data['fecha_mensaje'] = $mensaje->fecha_mensaje;
+			$data['texto_mensaje'] = $mensaje->texto_mensaje;
+			$html .= $this->load->view('cards/card-admin-mensaje', $data, true);
+		}
+		return $html;
+	}
+
+	function leer_ajustes_contacto(){
+		$data = array();
+		$aj = $this->Mensajes_model->leer_ajustes_contacto();
+		$data['reparto_contacto'] = $aj->reparto_contacto;
+		$data['email_contacto'] = $aj->email_contacto;
+		$data['telefono_contacto'] = $aj->telefono_contacto;
+		$data['facebook_contacto'] = $aj->facebook_contacto;
+		$data['twitter_contacto'] = $aj->twitter_contacto;
+		$data['instagram_contacto'] =$aj->instagram_contacto;
+		return $data;
+
+	}
+
+	public function modificar_ajustes_contacto(){
+		$this->form_validation->set_rules('reparto' , 'err', 'required|trim');
+		$this->form_validation->set_rules('email' , 'err', 'required|trim');
+		$this->form_validation->set_rules('telefono' , 'err', 'required|trim');
+		$this->form_validation->set_rules('facebook' , 'err', 'required|trim');
+		$this->form_validation->set_rules('twitter' , 'err', 'required|trim');
+		$this->form_validation->set_rules('instagram' , 'err', 'required|trim');
+
+		$this->form_validation->set_message('required', '%s1');
+		$this->form_validation->set_message('valid_email', '%s2');
+		$this->form_validation->set_error_delimiters('','');
+
+		if($this->form_validation->run() == false){
+			$error = array(
+				'err_reparto' => form_error('reparto'),
+				'err_email' => form_error('email'),
+				'err_telefono' => form_error('telefono'),
+				'err_facebook' => form_error('facebook'),
+				'err_twitter' => form_error('twitter'),
+				'err_instagram' => form_error('instagram')
+				);
+				echo json_encode($error);
+				exit();
+		}
+
+		$reparto = $this->input->post('reparto');
+		$email = $this->input->post('email');
+		$telefono = $this->input->post('telefono');
+		$facebook = $this->input->post('facebook');
+		$twitter = $this->input->post('twitter');
+		$instagram = $this->input->post('instagram');
+
+		if($this->Mensajes_model->modificar_ajustes_contacto($reparto, $email, $telefono, $facebook, $twitter, $instagram)){
+			echo json_encode(array('status' => 'ok'));
+		}else{
+			echo json_encode(array('status' => 'error'));
+		}
 	}
 
 	function leer_carruseles(){
@@ -216,81 +311,36 @@ class Admin extends CI_Controller {
 			$html .= '<tr>
         				<td>'.$img->id_img_producto.'</td>
         				<td>'.$img->url_img_producto.'</td>
-        				<td><button type="button" class="close" data-id-img-producto="'.$img->id_img_producto.'" data-id-producto="'.$img->id_producto.'">&times;</button></td>
+        				<td><button type="button" class="close btn-eliminar-img" data-id-img-producto="'.$img->id_img_producto.'" data-id-producto="'.$img->id_producto.'">&times;</button></td>
         			</tr>';
 		}
 
 		return $html;
 	}
 
-	public function agregar_producto_catalogo(){
-		$this->form_validation->set_rules('nombre' , 'err', 'required|trim');
-		$this->form_validation->set_rules('descripcion' , 'err', 'required|trim');
-		$this->form_validation->set_rules('precio' , 'err', 'required|trim');
-
-
-		$this->form_validation->set_message('required', '%s1');
-		$this->form_validation->set_message('valid_email', '%s2');
-		$this->form_validation->set_error_delimiters('','');
-
-		if($this->form_validation->run() == false){
-			$error = array(
-				'err_nombre' => form_error('nombre'),
-				'err_descripcion' => form_error('descripcion'),
-				'err_precio' => form_error('precio')
-				);
-				echo json_encode($error);
-				exit();
+	function leer_modals_eliminar_productos(){
+		$html = '';
+		$productos = $this->Productos_model->leer_productos();
+		foreach($productos->result() as $prod){
+			$data['id_producto'] = $prod->id_producto;
+			$html .= $this->load->view('modals/eliminar-producto-modal', $data, true);
 		}
-
-		$nombre = $this->input->post('nombre');
-		$descripcion = $this->input->post('descripcion');
-		$precio = $this->input->post('precio');
-
-		if($this->Productos_model->guardar_producto($nombre, $descripcion, $precio)){
-			echo json_encode(array('status' => 'ok'));
-		}else{
-			echo json_encode(array('status' => 'error'));
-		}
+		return $html;
 	}
 
-	public function modificar_producto_catalogo($id){
-		$this->form_validation->set_rules('nombre' , 'err', 'required|trim');
-		$this->form_validation->set_rules('descripcion' , 'err', 'required|trim');
-		$this->form_validation->set_rules('precio' , 'err', 'required|trim');
-
-
-		$this->form_validation->set_message('required', '%s1');
-		$this->form_validation->set_message('valid_email', '%s2');
-		$this->form_validation->set_error_delimiters('','');
-
-		if($this->form_validation->run() == false){
-			$error = array(
-				'err_nombre' => form_error('nombre'),
-				'err_descripcion' => form_error('descripcion'),
-				'err_precio' => form_error('precio')
-				);
-				echo json_encode($error);
-				exit();
+	function leer_modals_modificar_producto(){
+		$html = '';
+		$productos = $this->Productos_model->leer_productos();
+		foreach($productos->result() as $producto){
+			$data['id_producto'] = $producto->id_producto;
+			$data['nombre_producto'] = $producto->nombre_producto;
+			$data['descripcion_producto'] = $producto->descripcion_producto;
+			$data['precio_producto'] = $producto->precio_producto;
+			$data['imgs_producto'] = $this->leer_imgs_producto($producto->id_producto);
+			$html .= $this->load->view('modals/modificar-producto-modal', $data, true);
 		}
 
-		$nombre = $this->input->post('nombre');
-		$descripcion = $this->input->post('descripcion');
-		$precio = $this->input->post('precio');
-
-		if($this->Productos_model->modificar_producto($id, $nombre, $descripcion, $precio)){
-			echo json_encode(array('status' => 'ok'));
-		}else{
-			echo json_encode(array('status' => 'error'));
-		}
-	}
-
-	public function eliminar_producto_catalogo($id){
-		if($this->Productos_model->eliminar_producto($id)){
-			echo json_encode(array('status' => 'ok'));
-		}else{
-			echo json_encode(array('status' => 'error'));
-		}
+		return $html;
 	}
 
 
