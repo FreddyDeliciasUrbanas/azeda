@@ -37,16 +37,23 @@ function modificar_carrusel( id, titulo, subtitulo, img){
 		contentType:false,
 		cache:false,
 		dataType:'json',
+		beforeSend:function(){
+			$('#btn-submit-carrusel-'+id).addClass('nodisplay');
+			$('#btn-cargando-carrusel-'+id).removeClass('nodisplay');
+		},
 		success:function(data){
 			if(typeof(data.status) == 'undefined'){}
 			else{
 				if(data.status == 'ok'){
-					$('#btn-submit-carrusel-'+id).addClass('nodisplay');
+					$('#btn-cargando-carrusel-'+id).addClass('nodisplay');
 					$('#btn-modificado-'+id).removeClass('nodisplay');
 
 					setTimeout(function(){
 						location.href = base_url + 'admin';
 					},2000);
+				}else{
+					$('#btn-submit-carrusel-'+id).removeClass('nodisplay');
+					$('#btn-cargando-carrusel-'+id).addClass('nodisplay');
 				}
 			}
 		},error:function(xhr,b,c){

@@ -38,8 +38,9 @@
 		</div>
 
 		<div class="col-12">
-			<button id="btn-modificado-1" class="btn btn-success nodisplay float-right"><span class="fa fa-check-circle"></span>Modificado</button>
+			<button id="btn-modificado-1" class="btn btn-success nodisplay float-right"><span style="font-size:19px" class="fa fa-check-circle"></span>Modificado</button>
 			<button id="btn-submit-carrusel-1" class="btn btn-outline-secondary float-right">Modificar</button>
+			<button id="btn-cargando-carrusel-1" class="btn btn-info float-right nodisplay"><span class="fa fa-spin fa-circle-notch" style="font-size:19px"></span>  Guardando...</button>
 		</div>
 		
 	</div>

@@ -28,7 +28,7 @@
 	<div class="row">
 		<div class="col-3">
 			<div id="list-example" class="list-group">
-			  <a class="list-group-item list-group-item-action <?php echo $carrusel_active; ?>" href="<?php echo base_url(); ?>admin/">Carrusel</a>
+			  <a class="list-group-item list-group-item-action <?php echo $carrusel_active; ?>" href="<?php echo base_url(); ?>admin">Carrusel</a>
 			  <a class="list-group-item list-group-item-action <?php echo $presentacion_active; ?>" href="<?php echo base_url(); ?>admin/presentacion">Presentacion</a>
 			  <a class="list-group-item list-group-item-action <?php echo $catalogo_active; ?>" href="<?php echo base_url(); ?>admin/catalogo">Catalogo</a>
 			  <a class="list-group-item list-group-item-action <?php echo $contacto_active; ?>" href="<?php echo base_url(); ?>admin/contacto">Contacto</a>
