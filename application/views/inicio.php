@@ -5,7 +5,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/logo-navbar-large.png" alt="" class="img-fluid"> </a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="assets/img/navbar-brand.png" alt="" class="img-fluid"> </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fas fa-bars"></i>
@@ -58,18 +58,30 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <header class="masthead slide1">
+          <img class="d-block w-100" src="assets/img/<?php echo $img_carrusel_1; ?>" alt="">
+          <div class="carousel-caption d-none d-md-block">
+            <h1 class="mx-auto my-0 text-shadow"><?php echo $titulo_carrusel_1; ?></h1>
+            <h2 class="text-white mx-auto mt-2 mb-5 text-shadow"><?php echo $subtitulo_carrusel_1; ?></h2>
+            <a href="#signup" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
+          </div>
+          <!--header class="masthead">
             <div class="container d-flex h-100 align-items-center">
               <div class="mx-auto text-center">
-                <h1 class="mx-auto my-0 text-uppercase text-shadow"><?php echo $titulo_carrusel_1; ?></h1>
+                <h1 class="mx-auto my-0 text-shadow"><?php echo $titulo_carrusel_1; ?></h1>
                 <h2 class="text-white mx-auto mt-2 mb-5 text-shadow"><?php echo $subtitulo_carrusel_1; ?></h2>
                 <a href="#signup" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
               </div>
             </div>
-          </header>
+          </header-->
         </div>
         <div class="carousel-item">
-          <header class="masthead slide2">
+          <img class="d-block w-100" src="assets/img/<?php echo $img_carrusel_2; ?>" alt="">
+          <div class="carousel-caption d-none d-md-block">
+            <h1 class="mx-auto my-0 text-shadow"><?php echo $titulo_carrusel_2; ?></h1>
+            <h2 class="text-white mx-auto mt-2 mb-5 text-shadow"><?php echo $subtitulo_carrusel_2; ?></h2>
+            <a href="#signup" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
+          </div>
+          <!--header class="masthead slide2">
             <div class="container d-flex h-100 align-items-center">
               <div class="mx-auto text-center">
                 <h1 class="mx-auto my-0 text-uppercase"><?php echo $titulo_carrusel_2; ?></h1>
@@ -77,10 +89,16 @@
                 <a href="#signup" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
               </div>
             </div>
-          </header>
+          </header-->
         </div>
         <div class="carousel-item">
-          <header class="masthead slide3">
+          <img class="d-block w-100" src="assets/img/<?php echo $img_carrusel_3; ?>" alt="">
+          <div class="carousel-caption d-none d-md-block">
+            <h1 class="mx-auto my-0 text-shadow"><?php echo $titulo_carrusel_3; ?></h1>
+            <h2 class="text-white mx-auto mt-2 mb-5 text-shadow"><?php echo $subtitulo_carrusel_3; ?></h2>
+            <a href="#signup" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
+          </div>
+          <!--header class="masthead slide3">
             <div class="container d-flex h-100 align-items-center">
               <div class="mx-auto text-center">
                 <h1 class="mx-auto my-0 text-uppercase"><?php echo $titulo_carrusel_3; ?></h1>
@@ -88,7 +106,7 @@
                 <a href="#signup" class="btn btn-primary js-scroll-trigger">Haz tu pedido</a>
               </div>
             </div>
-          </header>
+          </header-->
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -105,6 +123,10 @@
       .about-section{
         background-image: url('assets/img/fondo4.png') !important;
       }
+
+      .text-white{
+        text-shadow:4px 4px 5px rgba(0,0,0,.6);
+      }
     </style>
 
     <!-- About Section -->
@@ -113,7 +135,7 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2 class="text-white mb-4"><?php echo $titulo_presentacion; ?></h2>
-            <p class="text-white-50"><?php echo $subtitulo_presentacion; ?></p>
+            <p class="text-white"><?php echo $subtitulo_presentacion; ?></p>
           </div>
         </div>
         <img src="assets/img/<?php echo $img_presentacion; ?>" class="img-fluid" alt="">
@@ -220,7 +242,7 @@
     <section id="signup" class="signup-section">
       <div class="container text-center">
         <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-            <h2 class=" mb-5">Haz tu pedido dentro del valle<br> <small>Y a regiones a traves de encomienda</small></h2>
+            <h2 class="text-white mb-5">Haz tu pedido dentro del valle<br> <small>Y a regiones a traves de encomienda</small></h2>
         <div class="row">
 
           <div class="col-md-6 col-lg-6 mx-auto text-center">
@@ -343,7 +365,7 @@
           <div class="col-md-6 col-lg-6">
             <div class="row form" id="selector-producto">
                       <div class="container">
-                          <div class="text-center titulo-selector-producto">Selecciona tu producto</div>
+                          <div class="text-center titulo-selector-producto text-white">Selecciona tu producto</div>
                       </div>
                       <div class="container over-auto">
                       <input type="hidden" id="nro_productos"  value="<?php echo $nro_productos; ?>">

@@ -190,8 +190,8 @@ class Admin extends CI_Controller {
 
 	public function modificar_carrusel($id){
 
-		$this->form_validation->set_rules('titulo_carrusel' , 'err', 'required|trim');
-		$this->form_validation->set_rules('subtitulo_carrusel' , 'err', 'required|trim');
+		$this->form_validation->set_rules('titulo_carrusel' , 'err', 'trim');
+		$this->form_validation->set_rules('subtitulo_carrusel' , 'err', 'trim');
 		$this->form_validation->set_message('required', '%s1');
 		$this->form_validation->set_message('valid_email', '%s2');
 		$this->form_validation->set_error_delimiters('','');

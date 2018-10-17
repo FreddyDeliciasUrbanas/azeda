@@ -96,7 +96,7 @@
 <!--AJUSTES DE CONTACTO-->
 
 <div id="ajustes-contacto-container" class="row nodisplay ">
-	<div class="col-6 mx-auto">
+	<div class="col-xs-12 col-md-6 mx-auto">
 		<div class="form card">
 			<input id="input-reparto-contacto" type="text" class="form-control" placeholder="Campo entregas" value="<?php echo $reparto_contacto; ?>">
 			<input id="input-email-contacto" type="text" class="form-control" placeholder="Campo Email" value="<?php echo $email_contacto; ?>">

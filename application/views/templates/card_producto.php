@@ -5,7 +5,12 @@
         </a>
         <div class="card-body">
             <h5 class="card-title"><?php echo $nombre_producto; ?></h5>
-            <p class="card-text">$<?php echo $precio_producto; ?></p>
+            <p class="card-text">$<?php 
+            setlocale(LC_MONETARY, 'es_CL');
+            echo money_format('%i', $precio_producto);
+
+
+              ?></p>
             <a href="#signup" class="btn btn-primary js-scroll-trigger">Pidelo ahora!</a>
         </div>
     </div>

@@ -17,7 +17,7 @@ function modificar_presentacion(titulo, subtitulo, img){
 	$.ajax({
 		data:data,
 		type:'post',
-		url:'admin/modificar_presentacion',
+		url:'modificar_presentacion',
 		processData:false,
 		contentType:false,
 		cache:false,

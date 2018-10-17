@@ -34,7 +34,9 @@
                 
             </div>
             <div class="col-12">
-                <div class="text-center" style="font-size:2em">$<?php echo $precio_producto; ?></div>
+                <div class="text-center" style="font-size:2em"><?php
+                 setlocale(LC_MONETARY, 'es_CL');
+            echo utf8_encode(money_format('%.0n', $precio_producto)); ?></div>
             </div>
         </div>
       </div>
